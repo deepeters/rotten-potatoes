@@ -3,6 +3,7 @@ package ke.springboot.resources;
 import ke.springboot.models.CatalogueItem;
 import ke.springboot.models.Movie;
 import ke.springboot.models.Rating;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,11 +19,12 @@ import java.util.stream.Collectors;
 @RequestMapping("/catalogue")
 public class MovieCatalogueResource {
 
+    @Autowired
+    private RestTemplate restTemplate;
+
     @RequestMapping("/{userId}")
     public List<CatalogueItem> getCatalogue(@PathVariable("userId") String userId){
-
-        RestTemplate restTemplate = new RestTemplate();
-
+        
         //get all rated movie IDs
         List<Rating> ratings = Arrays.asList(
                 new Rating( "1234",  4),

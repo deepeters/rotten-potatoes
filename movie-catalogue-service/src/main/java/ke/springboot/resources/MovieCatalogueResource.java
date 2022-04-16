@@ -1,5 +1,6 @@
 package ke.springboot.resources;
 
+import com.netflix.discovery.DiscoveryClient;
 import ke.springboot.models.CatalogueItem;
 import ke.springboot.models.Movie;
 import ke.springboot.models.Rating;
@@ -24,6 +25,9 @@ public class MovieCatalogueResource {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
     //Use web client rather than rest client.
     @Autowired
